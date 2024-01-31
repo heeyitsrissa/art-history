@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const searchResults = document.getElementById('search-results');
     const modal = document.getElementById('artModal');
     const closeModal = document.querySelector('.close-button');
+    
 
     // Function to show the modal with art details
     function showModal(title, artist, description) {
