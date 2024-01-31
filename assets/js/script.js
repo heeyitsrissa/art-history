@@ -30,4 +30,3 @@ async function searchArt(query) {
         console.error('Search failed:', error);
         searchResults.innerHTML = `<p>Failed to fetch data. Please try again later.</p>`; // Show an error message if the fetch fails
     }
-}
