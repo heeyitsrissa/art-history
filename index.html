@@ -20,21 +20,23 @@
       <form id="search-form">
         <label for="search-input">Search</label>
         <input type="text" id="search-input" required />
-
         <button id="submitBtn" type="submit">Search</button>
       </form>
     </section>
 
     <section id="search-results">
-      <div id="artModal" class="modal">
-        <div class="modal-content">
-          <span class="close">&times;</span>
-          <h2 id="modalTitle"></h2>
-          <p id="modalArtist"></p>
-          <p id="modalDescription"></p>
-        </div>
-      </div>
+      <!-- Search results will be dynamically inserted here -->
     </section>
+
+    <!-- Modal should be outside the search-results section -->
+    <div id="artModal" class="modal">
+      <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <h2 id="modalTitle"></h2>
+        <p id="modalArtist"></p>
+        <p id="modalDescription"></p>
+      </div>
+    </div>
 
     <script src="./assets/js/script.js"></script>
   </body>
