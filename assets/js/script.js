@@ -4,6 +4,22 @@ document.addEventListener('DOMContentLoaded', () => {
     const searchResults = document.getElementById('search-results');
     const modal = document.getElementById('artModal');
     const closeModalButton = document.querySelector('.close-button');
+    const heroVideo = document.getElementById('hero-video');
+    const videoApiKey = 'AIzaSyCrEUWQWNOqW4OCuFyfL3kxNRNXPsBbfAc';
+
+//load youtube IFrame api
+    const scriptTag = document.createElement('script');
+    scriptTag.src = "https://www.youtube.com/iframe_api";
+    const firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.partentNode.insertBefore(scriptTag, firstScriptTag);
+
+    function youtubePlayerApiReady() {
+        heroVideo = new YT.Player('ytplayer',{
+            hieght: '360',
+            width: '640',
+            videoId: 'QiqPvJVgyqE'
+        })
+    }
 
     // Function to open the modal
     function openModal(title, artist, description) {
