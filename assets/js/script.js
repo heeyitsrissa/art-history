@@ -1,49 +1,75 @@
-const searchForm = document.getElementById('search-form');
-const searchInput = document.getElementById('search-input');
-const searchResults = document.getElementById('search-results');
+document.addEventListener('DOMContentLoaded', () => {
+    const searchForm = document.getElementById('search-form');
+    const searchInput = document.getElementById('search-input');
+    const searchResults = document.getElementById('search-results');
+    const modal = document.getElementById('artModal');
+    const closeModal = document.querySelector('.close-button');
 
-const videoApiKey = 'AIzaSyCrEUWQWNOqW4OCuFyfL3kxNRNXPsBbfAc';
-
-// Add event listener to the form submission
-searchForm.addEventListener('submit', function(e) {
-    e.preventDefault(); // Prevent the form from submitting traditionally
-    const query = searchInput.value.trim(); // Get the user's query from the input field
-    if (query) {
-        searchArt(query); // Call the searchArt function with the user's query
+    // Function to show the modal with art details
+    function showModal(title, artist, description) {
+        document.getElementById('modalTitle').textContent = title;
+        document.getElementById('modalArtist').textContent = artist;
+        document.getElementById('modalDescription').textContent = description;
+        modal.style.display = 'block';
     }
-});
 
-async function searchArt(query) {
-    searchResults.innerHTML = 'Loading...'; // Show a loading message
-    // Construct the API URL with the search query
-    const url = `https://api.artic.edu/api/v1/artworks/search?q=${encodeURIComponent(query)}&fields=id,title,artist_title,image_id&limit=10`;
+    // Function to attach click events to images
+    function attachClickEventsToImages() {
+        const images = searchResults.querySelectorAll('img');
+        images.forEach(image => {
+            image.addEventListener('click', () => {
+                const item = image.closest('.search-result-item');
+                const title = item.dataset.title;
+                const artist = item.dataset.artist;
+                const description = item.dataset.description; // Assuming description data is available
+                showModal(title, artist, description);
+            });
+        });
+    }
 
-    try {
-        const response = await fetch(url); // Fetch data from the API
-        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-        const data = await response.json(); // Parse the JSON response
+    // Close the modal when the close button is clicked
+    closeModal.addEventListener('click', () => {
+        modal.style.display = 'none';
+    });
 
-        if (data.data && data.data.length > 0) {
-            displayResults(data.data); // Display the results if any are found
-        } else {
-            searchResults.innerHTML = '<p>No results found. Try another search!</p>'; // Show a message if no results are found
+    // Also close the modal if the user clicks outside of it
+    window.addEventListener('click', (event) => {
+        if (event.target === modal) {
+            modal.style.display = 'none';
         }
-    } catch (error) {
-        console.error('Search failed:', error);
-        searchResults.innerHTML = `<p>Failed to fetch data. Please try again later.</p>`; // Show an error message if the fetch fails
+    });
+
+    // Function to fetch and display art results
+    async function searchArt(query) {
+        const url = `https://api.artic.edu/api/v1/artworks/search?q=${encodeURIComponent(query)}&fields=id,title,artist_title,image_id&limit=10`;
+
+        try {
+            const response = await fetch(url);
+            const data = await response.json();
+
+            searchResults.innerHTML = data.data.map(item => {
+                const imageUrl = item.image_id ? `https://www.artic.edu/iiif/2/${item.image_id}/full/843,/0/default.jpg` : 'path/to/placeholder/image';
+                return `<div class="search-result-item" data-title="${item.title}" data-artist="${item.artist_title}" data-description="Description not available.">
+                            <img src="${imageUrl}" alt="${item.title}" style="width:100px; cursor:pointer;">
+                            <h2>${item.title}</h2>
+                            <p>${item.artist_title}</p>
+                        </div>`;
+            }).join('');
+
+            // Attach click events to images after they have been added to the DOM
+            attachClickEventsToImages();
+        } catch (error) {
+            console.error('Failed to fetch artworks:', error);
+            searchResults.innerHTML = `<p>Error fetching art data. Please try again.</p>`;
+        }
     }
-}
-function displayResults(results) {
-    const itemsHtml = results.map(item => {
-        // Build the image URL using the IIIF Image API format provided by the Art Institute of Chicago
-        const imageUrl = item.image_id ? `https://www.artic.edu/iiif/2/${item.image_id}/full/843,/0/default.jpg` : 'path/to/your/placeholder/image.png';
-        return `
-            <div class="search-result-item">
-                <img src="${imageUrl}" alt="${item.title}" onerror="this.onerror=null; this.src='path/to/your/placeholder/image.png';">
-                <h2>${item.title}</h2>
-                <p>${item.artist_title || 'Unknown Artist'}</p>
-            </div>
-        `;
-    }).join('');
-    searchResults.innerHTML = itemsHtml; // Update the innerHTML of the searchResults element with the generated HTML
-}
+
+    // Event listener for the search form submission
+    searchForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const query = searchInput.value.trim();
+        if (query) {
+            searchArt(query);
+        }
+    });
+});
