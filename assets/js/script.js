@@ -4,20 +4,28 @@ document.addEventListener('DOMContentLoaded', () => {
     const searchResults = document.getElementById('search-results');
     const modal = document.getElementById('artModal');
     const closeModalButton = document.querySelector('.close-button');
-    const heroVideo = document.getElementById('hero-video');
+    let heroVideo;
     const videoApiKey = 'AIzaSyCrEUWQWNOqW4OCuFyfL3kxNRNXPsBbfAc';
 
 //load youtube IFrame api
     const scriptTag = document.createElement('script');
     scriptTag.src = "https://www.youtube.com/iframe_api";
     const firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.partentNode.insertBefore(scriptTag, firstScriptTag);
+    firstScriptTag.parentNode.insertBefore(scriptTag, firstScriptTag);
 
     function youtubePlayerApiReady() {
-        heroVideo = new YT.Player('ytplayer',{
-            hieght: '360',
+        heroVideo = new YT.Player('hero-video',{
+            height: '360',
             width: '640',
-            videoId: 'QiqPvJVgyqE'
+            videoId: 'QiqPvJVgyqE',
+            playerVars: {
+                'autoplay': 1,
+                'controls': 0,
+                'showinfo': 0,
+                'rel': 0,
+                'fs': 0,
+                'modestbranding': 1
+                },
         })
     }
 
@@ -87,4 +95,5 @@ document.addEventListener('DOMContentLoaded', () => {
         const query = searchInput.value.trim();
         searchArt(query);
     });
+    window.onYouTubeIframeAPIReady = youtubePlayerApiReady;
 });
