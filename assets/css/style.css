@@ -22,7 +22,6 @@ body {
     overflow: hidden;
 }
 
-
 img {
     margin:0 auto;
 }
@@ -40,3 +39,30 @@ h2 {
     font-size: 16px;
 }
 
+#description {
+    margin: 30px 7% 30px 7%;
+}
+
+#description h1 {
+    font-size: 30px;
+    font-weight: 900;
+    text-align: center;
+    color: #005e5f;
+}
+
+#description p {
+    font-size: 16px;
+    text-align: center;
+}
+
+#form-container {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    width: 40%;
+}
+
+.btn-primary {
+    background-color: #005e5f;
+    border: solid 1px #005e5f;
+}

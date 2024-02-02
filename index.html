@@ -20,6 +20,7 @@
 
     <title>artHistory</title>
   </head>
+
   <body>
     <header class="container">
       <h1 id="logo" class="d-flex justify-content-center">
@@ -29,21 +30,47 @@
     <table class="video-wrapper" border="0" cellspacing="0" cellpadding="0">
       <div id="hero-video"></div>
     </table>
+
+    <div class="flex-column justify-content-center">
+      <section id="description">
+        <h1>Unveil the Stories Behind Masterpieces</h1>
+        <p>
+          Welcome to <strong>ArtHistory</strong>, your gateway to the past
+          through the lens of art. Dive into an expansive universe of artworks
+          spanning centuries and cultures. Discover the hidden tales, the
+          artists' journeys, and the historical context that breathed life into
+          masterpieces. Whether you're a seasoned art enthusiast or a curious
+          newcomer, our search engine connects you with the rich tapestry of
+          human history expressed through art. Begin your exploration today and
+          see history in a new light.
+        </p>
+      </section>
+    </div>
+
     <section>
-      <form id="search-form">
-        <label for="search-input">Search</label>
-        <input type="text" id="search-input" required />
-        <button id="submitBtn" type="submit">Search</button>
-      </form>
+      <div id="form-container" class="d-flex justify-content-center">
+        <form id="search-form" class="input-group mb-3 p-2">
+          <input
+            type="text"
+            id="search-input"
+            class="form-control"
+            placeholder="What are you looking for?"
+            aria-label="What are you looking for?"
+            aria-describedby="button-addon2"
+            required
+          />
+          <button class="btn btn-primary" type="submit" id="submitBtn">
+            Button
+          </button>
+        </form>
+      </div>
     </section>
 
     <div class="d-flex justify-content-center m-5">
-
-      <h1>
-        
-      </h1>
-
-      <section id="search-results" class="d-flex flex-wrap justify-content-center">
+      <section
+        id="search-results"
+        class="d-flex flex-wrap justify-content-center"
+      >
         <!-- Search results will be dynamically inserted here -->
       </section>
     </div>
