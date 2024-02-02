@@ -22,3 +22,19 @@ body {
     overflow: hidden;
 }
 
+img {
+    margin:0 auto;
+}
+
+h2 {
+    color:rgb(63, 63, 63);
+    padding-top: 8px;
+    font-size: 20px;
+    font-weight: 900;
+}
+
+#search-results p {
+    color: #6c6c6c;
+    font-style: italic;
+    font-size: 16px;
+}
