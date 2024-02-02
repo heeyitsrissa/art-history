@@ -36,10 +36,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Function to open the modal
-    function openModal(title, artist, description) {
+     async function openModal(title, artist, artworkId) {
+        console.log('Open modal called');
+        const details = await fetchArtworkDetails(artworkId);
+
         document.getElementById('modalTitle').textContent = title;
         document.getElementById('modalArtist').textContent = artist;
-        document.getElementById('modalDescription').textContent = description;
+        document.getElementById('modalDescription').textContent =  details ? details.description : 'Description not available';
         modal.style.display = 'block';
     }
 
@@ -77,17 +80,21 @@ document.addEventListener('DOMContentLoaded', () => {
                         <h2>${artwork.title}</h2>
                         <p>${artwork.artist_title}</p>
                     </div>
+                </div>
                 `;
             }).join('');
 
             // Attach click event listeners to each artwork for opening the modal
             searchResults.querySelectorAll('.artwork').forEach(artworkElement => {
-                artworkElement.addEventListener('click', () => {
+                artworkElement.addEventListener('click', async () => {
                     const title = artworkElement.dataset.title;
                     const artist = artworkElement.dataset.artist;
-                    // Placeholder for description, you will replace this with the actual description later
+                    const artworkId = artworkElement.dataset.id;
+
+                    const details = await fetchArtworkDetails(artworkId);
+
                     const description = 'Description not available';
-                    openModal(title, artist, description);
+                    openModal(title, artist, details);
                 });
             });
         } catch (error) {
