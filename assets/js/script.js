@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 'autoplay': 1,
                 'loop': 1,
                 'controls': 0,
+                'controls': 0,
                 'playlist': 'zrzEzGxWJNw',
                 'showinfo': 0,
                 'rel': 0,
