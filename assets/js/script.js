@@ -37,30 +37,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Function to open the modal
      async function openModal(title, artist, artist_display) {
-        // console.log('Artwork ID:', artworkId);
-        // const details = await fetchArtworkDetails(artworkId);
-
+      
         document.getElementById('modalTitle').textContent = title;
         document.getElementById('modalArtist').textContent = artist;
         document.getElementById('modalDescription').textContent = artist_display;
         modal.style.display = 'block';
     }
 
-    // async function fetchArtworkDetails(artworkId) {
-    //     const detailsUrl = `https://api.artic.edu/api/v1/artworks/${artworkId}`;
-        
-    //     try {
-    //         const response = await fetch(detailsUrl);
-    //         const data = await response.json();
-            
-    //         // You might want to return specific details from the API response
-    //         return data.data;
-    //     } catch (error) {
-    //         console.error('Failed to fetch artwork details:', error);
-    //         return null;
-    //     }
-    // }
-    
 
     // Function to close the modal
     function closeModal() {
@@ -109,10 +92,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     const title = artworkElement.dataset.title;
                     const artist = artworkElement.dataset.artist;
                     const artist_display = artworkElement.dataset.artist_display;
-
-                    // const details = await fetchArtworkDetails(artworkId);
-
-                    // const description = 'Description not available';
                     openModal(title, artist, artist_display);
                 });
             });
