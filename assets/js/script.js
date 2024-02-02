@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
         heroVideo = new YT.Player('hero-video',{
             height: '650',
             width: '100%',
+            scrolling: 'no',
             listType: 'playlist',
             // videoId: 'zrzEzGxWJNw',
             playerVars: {
@@ -24,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 'autoplay': 1,
                 'loop': 1,
                 'controls': 1,
-                'playlist': ['zrzEzGxWJNw'],
+                'playlist': 'zrzEzGxWJNw',
                 'showinfo': 0,
                 'rel': 0,
                 'fs': 0,
