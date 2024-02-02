@@ -18,13 +18,11 @@ document.addEventListener('DOMContentLoaded', () => {
             height: '650',
             width: '100%',
             scrolling: 'no',
-            listType: 'playlist',
-            // videoId: 'zrzEzGxWJNw',
             playerVars: {
                 'mute': 1,
                 'autoplay': 1,
                 'loop': 1,
-                'controls': 1,
+                'controls': 0,
                 'playlist': 'zrzEzGxWJNw',
                 'showinfo': 0,
                 'rel': 0,
@@ -72,7 +70,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     ? `https://www.artic.edu/iiif/2/${artwork.image_id}/full/843,/0/default.jpg`
                     : 'path/to/your/placeholder/image.png';
                 return `
-                    <div class="artwork" data-id="${artwork.id}" data-title="${artwork.title}" data-artist="${artwork.artist_title || 'Unknown Artist'}">
+                <div class="d-flex my-3 flex-column col-12 col-lg-4"    
+                <div class="artwork d-flex flex-wrap" data-id="${artwork.id}" data-title="${artwork.title}" data-artist="${artwork.artist_title || 'Unknown Artist'}">
                         <img src="${imageUrl}" alt="${artwork.title}" style="width:100px; cursor:pointer;">
                         <h2>${artwork.title}</h2>
                         <p>${artwork.artist_title}</p>
