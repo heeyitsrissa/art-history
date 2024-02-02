@@ -93,6 +93,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="d-flex my-3 flex-column col-12 col-lg-4">    
                 <div class="artwork d-flex flex-wrap" data-id="${artwork.id}" data-title="${artwork.title}" data-artist="${artwork.artist_title || 'Unknown Artist'} "data-artist_display="${artwork.thumbnail.alt_text || 'Unknown Artist Display'}">
                         <img src="${imageUrl}" alt="${artwork.title}" style="width:100px; cursor:pointer;">
+                <div class="d-flex my-3 flex-column col-12 col-lg-4"    
+                <div class="artwork d-flex flex-wrap" data-id="${artwork.id}" data-title="${artwork.title}" data-artist="${artwork.artist_title || 'Unknown Artist'}">
+                        <img class="d-flex justify-content-center" src="${imageUrl}" alt="${artwork.title}" style="width:300px; cursor:pointer;">
                         <h2>${artwork.title}</h2>
                         <p>${artwork.artist_title}</p>
                     </div>
