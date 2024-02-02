@@ -15,17 +15,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function youtubePlayerApiReady() {
         heroVideo = new YT.Player('hero-video',{
-            height: '360',
-            width: '640',
-            videoId: 'QiqPvJVgyqE',
+            height: '650',
+            width: '100%',
+            listType: 'playlist',
+            // videoId: 'zrzEzGxWJNw',
             playerVars: {
+                'mute': 1,
                 'autoplay': 1,
-                'controls': 0,
+                'loop': 1,
+                'controls': 1,
+                'playlist': ['zrzEzGxWJNw'],
                 'showinfo': 0,
                 'rel': 0,
                 'fs': 0,
                 'modestbranding': 1
                 },
+            
+            
         })
     }
 
