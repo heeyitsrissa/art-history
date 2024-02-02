@@ -36,15 +36,31 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Function to open the modal
-     async function openModal(title, artist, artworkId) {
-        console.log('Open modal called');
-        const details = await fetchArtworkDetails(artworkId);
+     async function openModal(title, artist, artist_display) {
+        // console.log('Artwork ID:', artworkId);
+        // const details = await fetchArtworkDetails(artworkId);
 
         document.getElementById('modalTitle').textContent = title;
         document.getElementById('modalArtist').textContent = artist;
-        document.getElementById('modalDescription').textContent =  details ? details.description : 'Description not available';
+        document.getElementById('modalDescription').textContent = artist_display;
         modal.style.display = 'block';
     }
+
+    // async function fetchArtworkDetails(artworkId) {
+    //     const detailsUrl = `https://api.artic.edu/api/v1/artworks/${artworkId}`;
+        
+    //     try {
+    //         const response = await fetch(detailsUrl);
+    //         const data = await response.json();
+            
+    //         // You might want to return specific details from the API response
+    //         return data.data;
+    //     } catch (error) {
+    //         console.error('Failed to fetch artwork details:', error);
+    //         return null;
+    //     }
+    // }
+    
 
     // Function to close the modal
     function closeModal() {
@@ -63,17 +79,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Function to perform a search and display results
     async function searchArt(query) {
-        const url = `https://api.artic.edu/api/v1/artworks/search?q=${encodeURIComponent(query)}&fields=id,title,artist_title,image_id&limit=10`;
+        const url = `https://api.artic.edu/api/v1/artworks/search?q=${encodeURIComponent(query)}&fields=id,title,artist_title,image_id,thumbnail&limit=10`;
 
         try {
             const response = await fetch(url);
             const data = await response.json();
-
+            console.log(data.data[0])
             searchResults.innerHTML = data.data.map(artwork => {
                 const imageUrl = artwork.image_id
                     ? `https://www.artic.edu/iiif/2/${artwork.image_id}/full/843,/0/default.jpg`
                     : 'path/to/your/placeholder/image.png';
                 return `
+                <div class="d-flex my-3 flex-column col-12 col-lg-4">    
+                <div class="artwork d-flex flex-wrap" data-id="${artwork.id}" data-title="${artwork.title}" data-artist="${artwork.artist_title || 'Unknown Artist'} "data-artist_display="${artwork.thumbnail.alt_text || 'Unknown Artist Display'}">
+                        <img src="${imageUrl}" alt="${artwork.title}" style="width:100px; cursor:pointer;">
                 <div class="d-flex my-3 flex-column col-12 col-lg-4"    
                 <div class="artwork d-flex flex-wrap" data-id="${artwork.id}" data-title="${artwork.title}" data-artist="${artwork.artist_title || 'Unknown Artist'}">
                         <img class="d-flex justify-content-center" src="${imageUrl}" alt="${artwork.title}" style="width:300px; cursor:pointer;">
@@ -89,12 +108,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 artworkElement.addEventListener('click', async () => {
                     const title = artworkElement.dataset.title;
                     const artist = artworkElement.dataset.artist;
-                    const artworkId = artworkElement.dataset.id;
+                    const artist_display = artworkElement.dataset.artist_display;
 
-                    const details = await fetchArtworkDetails(artworkId);
+                    // const details = await fetchArtworkDetails(artworkId);
 
-                    const description = 'Description not available';
-                    openModal(title, artist, details);
+                    // const description = 'Description not available';
+                    openModal(title, artist, artist_display);
                 });
             });
         } catch (error) {
@@ -110,4 +129,5 @@ document.addEventListener('DOMContentLoaded', () => {
         searchArt(query);
     });
     window.onYouTubeIframeAPIReady = youtubePlayerApiReady;
+    
 });
