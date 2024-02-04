@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const searchResults = document.getElementById('search-results');
     let heroVideo;
 
-
     function openModal(title, artist, artist_display) {
         // Set the content in the modal's title and body
         document.getElementById('exampleModalLongTitle').textContent = title;
@@ -17,22 +16,6 @@ document.addEventListener('DOMContentLoaded', () => {
         // Use Bootstrap's modal method to show the modal
         var myModal = new bootstrap.Modal(document.getElementById('exampleModalCenter'));
         myModal.show();
-
-
-    // Function to open the modal
-     async function openModal(title, artist, artist_display) {
-      
-        document.getElementById('modalTitle').textContent = title;
-        document.getElementById('modalArtist').textContent = artist;
-        document.getElementById('modalDescription').textContent = artist_display;
-        modal.style.display = 'block';
-    }
-
-
-    // Function to close the modal
-    function closeModal() {
-        modal.style.display = 'none';
-
     }
 
     // Event listener for the search form submission
