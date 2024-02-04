@@ -1,95 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script scrolling="no" src="https://www.youtube.com/iframe_api"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-      class="css"
-    />
-    <link rel="stylesheet" href="./assets/css/reset.css" class="css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="./assets/css/style.css" />
-
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>artHistory</title>
-  </head>
-
-  <body>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/css/reset.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
     <header class="container">
-      <h1 id="logo" class="d-flex justify-content-center">
-        <img src="./assets/images/artHistory-logo.png" />
-      </h1>
+        <h1 id="logo" class="d-flex justify-content-center">
+            <img src="./assets/images/artHistory-logo.png" alt="ArtHistory Logo">
+        </h1>
     </header>
-    <table class="video-wrapper" border="0" cellspacing="0" cellpadding="0">
-      <div id="hero-video"></div>
-    </table>
+
+    <div id="hero-video" class="video-wrapper"></div>
 
     <div class="flex-column justify-content-center">
-      <section id="description">
-        <h1>Unveil the Stories Behind Masterpieces</h1>
-        <p>
-          Welcome to <strong>ArtHistory</strong>, your gateway to the past
-          through the lens of art. Dive into an expansive universe of artworks
-          spanning centuries and cultures. Discover the hidden tales, the
-          artists' journeys, and the historical context that breathed life into
-          masterpieces. Whether you're a seasoned art enthusiast or a curious
-          newcomer, our search engine connects you with the rich tapestry of
-          human history expressed through art. Begin your exploration today and
-          see history in a new light.
-        </p>
-      </section>
+        <section id="description">
+            <h1>Unveil the Stories Behind Masterpieces</h1>
+            <p>Welcome to <strong>ArtHistory</strong>, your gateway to the past through the lens of art. Dive into an expansive universe of artworks spanning centuries and cultures. Discover the hidden tales, the artists' journeys, and the historical context that breathed life into masterpieces. Whether you're a seasoned art enthusiast or a curious newcomer, our search engine connects you with the rich tapestry of human history expressed through art. Begin your exploration today and see history in a new light.</p>
+        </section>
     </div>
 
     <section>
-      <div id="form-container" class="d-flex justify-content-center">
-        <form id="search-form" class="input-group mb-3 p-2">
-          <input
-            type="text"
-            id="search-input"
-            class="form-control"
-            placeholder="What are you looking for?"
-            aria-label="What are you looking for?"
-            aria-describedby="button-addon2"
-            required
-          />
-          <button class="btn btn-primary" type="submit" id="submitBtn">
-            Button
-          </button>
-        </form>
-      </div>
+        <div id="form-container" class="d-flex justify-content-center">
+            <form id="search-form" class="input-group mb-3 p-2">
+                <input type="text" id="search-input" class="form-control" placeholder="What are you looking for?" aria-label="What are you looking for?" required>
+                <button class="btn btn-primary" type="submit">Search</button>
+            </form>
+        </div>
     </section>
 
     <div class="d-flex justify-content-center m-5">
-      <section
-        id="search-results"
-        class="d-flex flex-wrap justify-content-center"
-      >
-        <!-- Search results will be dynamically inserted here -->
-      </section>
+        <section id="search-results" class="d-flex flex-wrap justify-content-center">
+        </section>
     </div>
 
-    <!-- Modal should be outside the search-results section -->
-    <div id="artModal" class="modal">
-      <div class="modal-content">
-        <span class="close-button">&times;</span>
-        <h2 id="modalTitle"></h2>
-        <p id="modalArtist"></p>
-        <p id="modalDescription"></p>
+    <!-- Bootstrap Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="exampleModalLongTitle"></h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
       </div>
     </div>
+  </div>
+</div>
 
-    <script
-      src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"
-      integrity="sha256-xLD7nhI62fcsEZK2/v8LsBcb4lG7dgULkuXoXB/j91c="
-      crossorigin="anonymous"
-    ></script>
+
+    <!-- Linked Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="./assets/js/script.js"></script>
-  </body>
+</body>
 </html>

@@ -14,6 +14,11 @@ body {
     display:none;
 }
 
+#hero-video {
+    height: 650px !important;
+    width: 100% !important;
+}
+
 .video-wrapper {
     padding: 0;
     margin: 0 auto;
@@ -65,4 +70,15 @@ h2 {
 .btn-primary {
     background-color: #005e5f;
     border: solid 1px #005e5f;
+}
+
+.modal-body h3 {
+    text-align: left;
+    font-size: 18px;
+    color: #6c6c6c;
+    font-style: italic;
+}
+
+.modal-body p {
+    text-align: left;
 }
