@@ -1,3 +1,8 @@
+:root {
+    --primary: #005e5f;
+    --grey: #6c6c6c;
+}
+
 * {
     font-family: Lato, sans-serif;
 }
@@ -15,7 +20,7 @@ body {
 }
 
 #hero-video {
-    height: 650px !important;
+    height: 500px !important;
     width: 100% !important;
 }
 
@@ -39,7 +44,7 @@ h2 {
 }
 
 #search-results p {
-    color: #6c6c6c;
+    color: var(--grey);
     font-style: italic;
     font-size: 16px;
 }
@@ -52,7 +57,7 @@ h2 {
     font-size: 30px;
     font-weight: 900;
     text-align: center;
-    color: #005e5f;
+    color: var(--primary);
 }
 
 #description p {
@@ -64,21 +69,59 @@ h2 {
     display: flex;
     justify-content: center;
     margin: 0 auto;
-    width: 40%;
 }
 
 .btn-primary {
-    background-color: #005e5f;
-    border: solid 1px #005e5f;
+    background-color: var(--primary);
+    border: solid 1px var(--primary);
 }
 
 .modal-body h3 {
     text-align: left;
     font-size: 18px;
-    color: #6c6c6c;
+    color: var(--grey);
     font-style: italic;
 }
 
 .modal-body p {
     text-align: left;
+}
+
+.input-group {
+    width: 40%;
+}
+
+footer {
+    background-color: var(--primary);
+    padding: 30px;
+    color: white;
+}
+
+footer a {
+    text-decoration: none;
+    color: var(--primary);
+}
+
+footer a:hover {
+    text-decoration: none;
+    color: white;
+}
+
+#footer-btn {
+    background-color: white;
+    color: var(--primary);
+    border: solid 2px var(--primary);
+}
+
+
+#footer-btn:hover {
+    background-color: var(--primary);
+    border: solid 2px white;
+    color: white;
+}
+
+@media only screen and (max-width: 768px) {
+    .input-group {
+        width: 90%;
+    }
 }
