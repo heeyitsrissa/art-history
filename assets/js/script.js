@@ -53,11 +53,41 @@ document.addEventListener('DOMContentLoaded', () => {
                     openModal(title, artist, artist_display);
                 });
             });
+            saveSearchQuery(query);
+
+            displayPrevSearches();
+
         } catch (error) {
             console.error('Failed to fetch artworks:', error);
             searchResults.innerHTML = `<p>Error fetching art data. Please try again.</p>`;
         }
     }
+    
+    function saveSearchQuery(query){
+        let searches = JSON.parse(localStorage.getItem('searches')) || [];
+        if(!searches.includes(query)){
+        searches.push(query);
+        localStorage.setItem('searches', JSON.stringify(searches))
+        displayPrevSearches();
+        }
+    };
+
+    function displayPrevSearches(){
+        const searchContainer = document.getElementById('previous-searches');
+        searchContainer.innerHTML = '';
+        const searches = JSON.parse(localStorage.getItem('searches')) || [];
+        searches.forEach(search => {
+            const searchItem = document.createElement('div');
+            searchItem.textContent = search;
+            searchItem.classList.add('previous-search');
+            searchItem.addEventListener('click', function(){
+                searchArt(search)
+            })
+            searchContainer.appendChild(searchItem)
+        })
+    }
+
+    displayPrevSearches();
 
     // YouTube Video Setup
 function onYouTubeIframeAPIReady() {
