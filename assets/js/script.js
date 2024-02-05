@@ -34,6 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
             searchResults.innerHTML = data.data.map(artwork => {
                 const imageUrl = artwork.image_id ? `https://www.artic.edu/iiif/2/${artwork.image_id}/full/843,/0/default.jpg` : 'path/to/your/placeholder/image.png';
                 return `
+
                 <div class="d-flex my-3 flex-column col-12 col-lg-4">
                     <div class="artwork d-flex flex-wrap flex-column" data-id="${artwork.id}" data-title="${artwork.title}" data-artist="${artwork.artist_title || 'Unknown Artist'}" data-artist_display="${artwork.thumbnail.alt_text || 'Unknown Artist Display'}">
                         <img class="d-flex justify-content-center" src="${imageUrl}" alt="${artwork.title}" style="width:300px; cursor:pointer;">
