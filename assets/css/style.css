@@ -124,4 +124,8 @@ footer a:hover {
     .input-group {
         width: 90%;
     }
+
+    #hero-video {
+        height: 280px !important;
+    }
 }
