@@ -77,13 +77,13 @@ document.addEventListener('DOMContentLoaded', () => {
         searchContainer.innerHTML = '';
         const searches = JSON.parse(localStorage.getItem('searches')) || [];
         searches.forEach(search => {
-            const searchItem = document.createElement('div');
-            searchItem.textContent = search;
-            searchItem.classList.add('previous-search');
-            searchItem.addEventListener('click', function(){
+            const searchBtn = document.createElement('button');
+            searchBtn.textContent = search;
+            searchBtn.classList.add('previous-search');
+            searchBtn.addEventListener('click', function(){
                 searchArt(search)
             })
-            searchContainer.appendChild(searchItem)
+            searchContainer.appendChild(searchBtn)
         })
     }
 
